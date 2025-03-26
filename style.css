@@ -1,0 +1,499 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    background-color: #fffcdc;
+    line-height: 1.6;
+  }
+
+  
+.top-banner {
+    width: 100%;
+    text-align: center; 
+    margin-bottom: 0;   
+  }
+  
+  .banner-image {
+    width: 100%;         
+    height: auto;        
+    display: block;      
+    
+    
+  }
+
+  
+  .toggle-header-btn-container {
+    margin: 1rem auto;
+    max-width: 1200px;
+    text-align: right; 
+    margin-right: 1rem;
+    position: relative; /* ताकि tooltip absolute position ले सके */
+    overflow: visible;  /* tooltip कटे नहीं */
+  }
+  
+  
+  #toggleHeaderBtn {
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #FFA500;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    display: inline-flex;   
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    position: relative; 
+    overflow: visible;
+    z-index: 10; /* tooltip को ऊपर लाने के लिए */
+  }
+
+  #toggleHeaderBtn:hover {
+  background-color: #e68a00;
+}
+  
+  
+  #toggleHeaderBtn:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -35px;       
+    right: 50%;          
+    transform: translateX(50%);
+    background-color: #333;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+  
+  #toggleHeaderBtn i {
+    font-size: 1.2rem; 
+  }
+  
+  
+  #scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #FFA500;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    display: none; 
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, opacity 0.3s;
+    opacity: 0;
+    z-index: 9999; /* बटन को सबसे ऊपर दिखाने के लिए */
+  }
+  
+
+#scrollToTopBtn i {
+    font-size: 1.2rem;
+}
+
+
+#scrollToTopBtn:hover {
+    background-color: #e68a00;
+}
+
+#scrollToTopBtn:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -35px;       
+    right: 50%;
+    transform: translateX(50%);
+    background-color: #333;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+  
+  
+  
+  .header {
+    background-color: #fdf3b6;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    padding: 1rem 1rem;       
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  
+  .logo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .logo .brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #FFA500;
+    text-decoration: none;
+  }
+  
+  .logo .brand span {
+    color: #000;
+  }
+  
+  .tagline {
+    font-size: 0.75rem;
+    color: #666;
+  }
+  
+  
+  .nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav-links ul li a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    color: #333;
+    padding: 1rem 1rem;
+    transition: color 0.3s;
+    font-weight: 600; 
+  }
+  
+  
+  
+  .nav-links ul li a:hover {
+    color: #FFA500;
+  }
+  
+  .nav-links ul li a i {
+  margin-right: 0.5rem;
+}
+
+  .nav-links ul li a.active {
+    background-color: #FFA500; /* अपना मनचाहा कलर लगाएँ */
+    color: #fff;              /* टेक्स्ट को contrast में सफ़ेद करें */
+    border-radius: 20px;       /* कोनों को हल्का गोल करें (इच्छानुसार) */
+    border-bottom: none;      /* पुराना border-bottom हटाना हो तो */
+    padding: 0.75rem 1rem;    /* Hover जैसा spacing बनाए रखने के लिए */
+  }
+  
+  
+  
+.nav-links ul li.dropdown {
+    position: relative; 
+    border-radius: 20px;
+  }
+  
+  
+  .nav-links ul li .dropdown-content {
+    display: none;           
+    position: absolute;      
+    background-color: #fff;  
+    border: 1px solid #ddd;
+    min-width: 150px;        
+    margin-top: 0.5rem;      
+    list-style: none;
+    padding: 0;
+    z-index: 999;   
+    border-radius: 20px;         
+  }
+  
+  
+  .nav-links ul li .dropdown-content li {
+    border-bottom: 1px solid #eee;
+    border-radius: 20px;
+  }
+  
+  
+  .nav-links ul li .dropdown-content li:last-child {
+    border-bottom: none;
+    border-radius: 20px;
+  }
+  
+  
+  .nav-links ul li .dropdown-content li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #333;
+    text-decoration: none;
+    border-radius: 20px;
+  }
+  
+  
+  .nav-links ul li .dropdown-content li a:hover {
+    background-color: #f8f8f8;
+    color: #FFA500; 
+  }
+  
+  
+  .nav-links ul li.dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: #333;
+  }
+  
+  
+  .mobile-nav {
+    display: none;
+    background-color: #f8f8f8;
+  }
+  
+  .mobile-nav ul {
+    list-style: none;
+    padding: 1rem;
+  }
+  
+  .mobile-nav ul li {
+    margin-bottom: 1rem;
+  }
+  
+  .mobile-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+  }
+  
+  
+.journey-section {
+    background: #fffcdc;
+    padding: 30px 10%;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    font-size: 14px !important;
+    line-height: 1.5;    
+}
+
+.journey-heading {
+  position: relative;
+  text-align: center;
+  margin-bottom: 30px; 
+}
+
+.journey-heading h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #f37d16;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.timeline {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #f39541;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.journey-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.journey-box {
+  width: 45%;
+  background: white;
+  padding: 0px;    
+  margin: 15px 0;   
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: visible;
+  transition: transform 0.3s, box-shadow 0.3s;
+  z-index: 2;
+  font-size: 14px !important;
+}
+
+.journey-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.left {
+    align-self: flex-start;
+}
+
+.right {
+    align-self: flex-end;
+}
+
+.journey-box h3 {
+  font-size: 16px !important; 
+    color: #f39541;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.journey-box p {
+  font-size: 14px !important; 
+    color: #555;
+    line-height: 1.5;    
+    
+}
+
+.lc {
+  text-align: right;
+}
+
+.rc {
+  text-align: left;
+}
+.journey-box.left::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -25px;
+  width: 25px;
+  height: 2px;
+  background: #f0d383;
+  transform: translateY(-50%);
+}
+
+.journey-box.right::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -25px;
+  width: 25px;
+  height: 2px;
+  background: #f0d383;
+  transform: translateY(-50%);
+}
+
+.journey-box-inner {
+  position: relative;
+  overflow: hidden; 
+  padding: 10px; 
+  
+}
+
+.journey-box-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffefb9;       
+  transform: translateX(-100%); 
+  transition: transform 0.5s ease;
+  z-index: -1;              
+}
+
+
+.journey-box-inner:hover::before {
+  transform: translateX(0); 
+}
+  
+  
+  
+@media (max-width: 768px) {
+  /* केवल toggle btn और hamburger को छिपाएँ, .header-container को मत छिपाएँ */
+  .toggle-header-btn-container,
+  .hamburger {
+    display: none !important;
+  }
+
+  /* header-container को bottom पर fix कर दें */
+  .header-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    z-index: 9999;
+    padding: 0.5rem 0; /* थोड़ी padding */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* nav-links को row में space-around करें */
+  .nav-links ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links ul li {
+    list-style: none;
+    flex: 1; /* सभी items बराबर चौड़ाई लें */
+    text-align: center;
+  }
+
+  .nav-links ul li a {
+    display: flex;
+    flex-direction: column; /* आइकन ऊपर, टेक्स्ट नीचे */
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #333;
+    padding: 0.5rem;
+  }
+
+  .nav-links ul li a i {
+    margin-bottom: 0.25rem;
+    font-size: 1.2rem;
+  }
+
+  /* Active link का स्टाइल */
+  .nav-links ul li a.active {
+    background: none; /* pill shape नहीं चाहिए तो none */
+    color: #FFA500;
+    border-radius: 0;
+  }
+
+  #scrollToTopBtn {
+    bottom: 100px;  /* यहां आप अपने अनुसार value adjust कर सकते हैं */
+  }
+}
